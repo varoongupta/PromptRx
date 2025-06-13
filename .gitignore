@@ -1,1 +1,3 @@
+backend/.envnode_modules/
 backend/.env
+frontend/.node_modules/
