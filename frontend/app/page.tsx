@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
+
 type Evaluation = {
   clarity: number
   factuality: number
@@ -28,7 +30,7 @@ export default function HomePage() {
 
       // Only call backend for response if not in manual mode
       if (!manualMode) {
-        const res = await fetch('http://localhost:8000/api/prompt', {
+        const res = await fetch(`${BACKEND_URL}/api/prompt`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt }),
@@ -39,7 +41,7 @@ export default function HomePage() {
       }
 
       // Call evaluator
-      const evalRes = await fetch('http://localhost:8000/evaluate', {
+      const evalRes = await fetch(`${BACKEND_URL}/evaluate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt, response: modelResponse }),
