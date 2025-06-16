@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
+const BACKEND_URL = "https://promptrx-backend.onrender.com"
 
 type Evaluation = {
   clarity: number
@@ -64,6 +64,9 @@ export default function HomePage() {
     e.preventDefault()
     setLoading(true)
     setEvaluation(null)
+
+    console.log("Backend URL:", BACKEND_URL)
+
 
     try {
       let modelResponse = response
